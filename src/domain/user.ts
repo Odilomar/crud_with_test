@@ -6,15 +6,15 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-@Entity("users")
+@Entity()
 export class User {
   @PrimaryGeneratedColumn("uuid")
   id?: string;
 
-  @Column()
+  @Column({ nullable: false })
   name!: string;
 
-  @Column()
+  @Column({ nullable: false })
   email!: string;
 
   @CreateDateColumn()
@@ -22,17 +22,4 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt!: Date;
-
-  private constructor({ name, email }: User) {
-    return Object.assign(this, { name, email });
-  }
-
-  static create({
-    name,
-    email,
-    createdAt = new Date(),
-    updatedAt = new Date(),
-  }: User) {
-    return new User({ name, email, createdAt, updatedAt });
-  }
 }
