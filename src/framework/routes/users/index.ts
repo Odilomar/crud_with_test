@@ -8,10 +8,10 @@ import { putUsers } from "./putUser";
 
 const router = Router();
 
-router.use("/", postUsers);
-router.use("/", getUsers);
-router.use("/:id", getUser);
-router.use("/:id", putUsers);
-router.use("/:id", deleteUser);
+router.post("/", postUsers);
+router.get("/", getUsers);
+router.get("/:id", getUser);
+router.put("/:id", putUsers);
+router.delete("/:id", deleteUser);
 
 export default router;
